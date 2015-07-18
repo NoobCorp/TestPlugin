@@ -41,7 +41,7 @@ namespace Skeleton
         {
             get
             {
-                return return Assembly.GetExecutingAssembly().GetName().Version;
+                return Assembly.GetExecutingAssembly().GetName().Version;
             }
         }
         public override void Initialize()
