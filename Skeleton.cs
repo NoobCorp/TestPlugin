@@ -69,11 +69,11 @@ namespace Skeleton
                 {
                     case "kill":
                         getPlayer(args.Parameters[1]).DamagePlayer(1000);
-                        args.Player.SendInfoMessage(String.Format("You killed {0}", getPlayer(args.Parameters[1])));
+                        args.Player.SendInfoMessage(String.Format("You killed {0}", getPlayer(args.Parameters[1]).Name));
                         break;
                     case "heal":
                         getPlayer(args.Parameters[1]).Heal(500);
-                        args.Player.SendInfoMessage(String.Format("You healed {0}", getPlayer(args.Parameters[1])));
+                        args.Player.SendInfoMessage(String.Format("You healed {0}", getPlayer(args.Parameters[1]).Name));
                         break;
                     case "lc":
                         getPlayer(args.Parameters[1]).Disconnect("Respect the Booty");
