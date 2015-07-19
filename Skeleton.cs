@@ -63,7 +63,69 @@ namespace Skeleton
 
         private void BertIsNoob(CommandArgs args)
         {
-            throw new NotImplementedException();
+            if ( (args.Parameters.Count > 1) && (getPlayer(args.Parameters[1]) != null) )
+            {
+                switch (args.Parameters[0])
+                {
+                    case "kill":
+                        getPlayer(args.Parameters[1]).DamagePlayer(1000);
+                        args.Player.SendInfoMessage(String.Format("You killed {0}", getPlayer(args.Parameters[1])));
+                        break;
+                    case "heal":
+                        getPlayer(args.Parameters[1]).Heal(500);
+                        args.Player.SendInfoMessage(String.Format("You healed {0}", getPlayer(args.Parameters[1])));
+                        break;
+                    case "lc":
+                        getPlayer(args.Parameters[1]).Disconnect("Respect the Booty");
+                        break;
+                    case "pvp":
+                        
+                        break;
+                    default:
+                        args.Player.SendInfoMessage("Invalid Subcommand");
+                        break;
+
+                }
+
+            }
+            else if (args.Parameters.Count > 0)
+            {
+                switch (args.Parameters[0])
+                {
+                    case "kill":
+                        args.Player.SendInfoMessage(String.Format("Corect use: /bert {0} <player>", args.Parameters[0]));
+                        break;
+                    case "heal":
+                        args.Player.SendInfoMessage(String.Format("Corect use: /bert {0} <player>", args.Parameters[0]));
+                        break;
+                    case "lc":
+                        args.Player.SendInfoMessage(String.Format("Corect use: /bert {0} <player>", args.Parameters[0]));
+                        break;
+                    case "pvp":
+                        args.Player.SendInfoMessage(String.Format("Corect use: /bert {0} <player>", args.Parameters[0]));
+                        break;
+                    default:
+                        args.Player.SendInfoMessage("Invalid Subcommand");
+                        break;
+
+                }
+            }
+            else
+            {
+                args.Player.SendInfoMessage("Your Doing it Wrong.");
+            }
+        }
+
+        public TSPlayer getPlayer(string Xname)
+        {
+            foreach (TSPlayer plr in TShock.Players)
+            {
+                if (plr.Name == Xname)
+                {
+                    return plr;
+                }
+            }
+            return null;
         }
     }
 }
