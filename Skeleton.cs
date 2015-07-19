@@ -79,7 +79,19 @@ namespace Skeleton
                         getPlayer(args.Parameters[1]).Disconnect("Respect the Booty");
                         break;
                     case "pvp":
-                        
+                        if (!Main.player[getPlayer(args.Parameters[1]).Index].hostile)
+                        {
+                            Main.player[getPlayer(args.Parameters[1]).Index].hostile = true;
+                            NetMessage.SendData((int)PacketTypes.TogglePvp, -1, -1, "", args.Player.Index);
+                            getPlayer(args.Parameters[1]).SendInfoMessage("Your PvP is now enabled.");
+                        }
+                        else if (Main.player[getPlayer(args.Parameters[1]).Index].hostile)
+                        {
+                            Main.player[getPlayer(args.Parameters[1]).Index].hostile = false;
+                            NetMessage.SendData((int)PacketTypes.TogglePvp, -1, -1, "", getPlayer(args.Parameters[1]).Index);
+                            getPlayer(args.Parameters[1]).SendInfoMessage("Your PvP is now disabled.");
+                        }
+
                         break;
                     default:
                         args.Player.SendInfoMessage("Invalid Subcommand");
